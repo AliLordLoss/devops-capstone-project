@@ -187,3 +187,17 @@ class TestAccountService(TestCase):
         )
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_list_accounts(self):
+        """It should List all Accounts"""
+        n = random.randint(0, 10)
+        self._create_accounts(n)
+
+        response = self.client.get(
+            BASE_URL
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        data = response.get_json()
+        self.assertEqual(len(data), n)
