@@ -201,3 +201,10 @@ class TestAccountService(TestCase):
         
         data = response.get_json()
         self.assertEqual(len(data), n)
+
+    def test_method_not_allowed(self):
+        """It should give 405 status when calling BASE_URL with DELETE method"""
+        response = self.client.delete(
+            BASE_URL
+        )
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
