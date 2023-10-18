@@ -24,6 +24,7 @@ BASE_URL = "/accounts"
 
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
@@ -225,7 +226,7 @@ class TestAccountService(TestCase):
         self.assertEqual(response.headers["X-Content-Type-Options"], "nosniff")
         self.assertEqual(response.headers["Content-Security-Policy"], "default-src \'self\'; object-src \'none\'")
         self.assertEqual(response.headers["Referrer-Policy"], "strict-origin-when-cross-origin")
-    
+
     def test_cors_header(self):
         """It should return cors header"""
         response = self.client.get(
