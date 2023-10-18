@@ -74,8 +74,8 @@ spec:
         name: buildah
         kind: clusterTask
       params:
-      - name: args
-        value: "-v --with-spec --spec-color"
+      - name: IMAGE
+        value: "$(params.build-image)"
       runAfter:
         - lint
         - tests
